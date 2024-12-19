@@ -14,4 +14,31 @@ class CycleOueue:
             
         else:
             self.rear = (self.rear+1)%self.initialsize
-            queue[self.rear]= data
+            self.queue[self.rear]= data
+            
+            
+            
+    def dequeue(self,function=print):
+        if (self.front ==-1):
+            function("EMPTY")
+        elif (self.front ==self.rear):
+            t = self.queue[self.front]
+            self.front = -1
+            self.rear = -1
+            return t
+        
+        else:
+            t = self.queue[self.front]
+            self.front = (self.front+1)%self.initialsize
+            return t
+    
+    
+    def traverse(self,function=print):  
+        for i in range(self.front,self.rear+1):
+            function(self.queue[i],end=' ')
+        function()
+        
+        
+        
+cyque = CycleOueue(4)
+cyque.enqueue("ariyan")
